@@ -1,0 +1,19 @@
+cd "C:\Users\Vikas M\OneDrive\Desktop\CIVIC\CivicConnect"
+
+mvn clean package
+
+$env:JAVA_HOME="C:\Program Files\Java\jdk-24"
+
+Copy-Item ".\target\CivicConnect.war" "$env:USERPROFILE\Downloads\apache-tomcat-9.0.117-windows-x64\apache-tomcat-9.0.117\webapps\" -Force
+
+cd "$env:USERPROFILE\Downloads\apache-tomcat-9.0.117-windows-x64\apache-tomcat-9.0.117\bin"
+
+.\startup.bat
+
+Start-Sleep -Seconds 5
+
+Write-Host ""
+Write-Host "CivicConnect is running at:"
+Write-Host "http://localhost:8080/CivicConnect/"
+
+Start-Process "http://localhost:8080/CivicConnect/"
